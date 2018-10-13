@@ -17,9 +17,8 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="nav navbar-nav">
-        <h1><a class="navbar-brand" href="index.html"><img
-                src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""></a>
-        </h1>
+        <a class="navbar-brand" href="index.html">
+            <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="25" height="25"></a>
         <li><a href="#">Blog</a></li>
         <li><a class="nav-item" href="quiz.html">Quiz</a></li>
         <li class="nav-item">
@@ -27,56 +26,58 @@
     </ul>
 </nav>
 
-<div class="quiz-content">
+<div class="quiz-content text-center">
     <div class="progress">
         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100"
              style="width:10%">
         </div>
     </div>
 
-    <div>
-        <p id="question" align="center">pytanie</p>
-    </div>
-
-    <div>
-        <div class="col-sm-3">
+    <form>
+        <h2 id="question" align="center">pytanie</h2>
+        <div class="form-group">
             <button id="answerA" align="center" onclick="chooseAnswer(id)" type="button" class="btn btn-default">
                 Odpowiedź
                 pierwsza
             </button>
         </div>
-        <div class="col-sm-3">
+        <div class="form-group">
             <button id="answerB" align="center" onclick="chooseAnswer(id)" type="button" class="btn btn-default">
                 Odpowiedź
                 druga
             </button>
         </div>
-        <div class="col-sm-3 ">
+        <div class="form-group">
             <button id="answerC" align="center" onclick="chooseAnswer(id)" type="button" class="btn btn-default">
                 Odpowiedź
                 trzecia
             </button>
         </div>
-        <div class="col-sm-3 ">
+        <div class="form-group">
             <button id="answerD" align="center" onclick="chooseAnswer(id)" type="button" class="btn btn-default">
                 Odpowiedź
                 trzecia
             </button>
         </div>
-    </div>
+    </form>
 </div>
 
-<div class="result-content" style="display:none">
-    <button id="resetbtn" align="center" onclick="resetQuiz()" type="button" class="btn btn-default">Reset</button>
-    <div style="display: inline-block">
-        <p>Twój wynik: </p>
-        <p>Średni wynik: </p>
-    </div>
 
-    <div style="display: inline-block">
-        <p id="result-p">asd</p>
-        <p id="avereageresult-p">asd2</p>
-    </div>
+<div class="result-content text-center" style="display: none">
+    <form>
+        <div style="display: inline-block">
+            <h2>Twój wynik: </h2>
+            <h2>Średni wynik: </h2>
+        </div>
+
+        <div style="display: inline-block">
+            <h2 id="result-p">asd</h2>
+            <h2 id="avereageresult-p">asd2</h2>
+        </div>
+    </form>
+    <button id="resetbtn" align="center" onclick="resetQuiz()" type="button" class="btn btn-default">Zagraj jeszcze
+        raz!
+    </button>
 
 </div>
 
@@ -84,12 +85,80 @@
     var list = [];
     var points = 0;
     var count = 0;
-    var question = ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10"];
-    var answersA = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"];
-    var answersB = ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"];
-    var answersC = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"];
-    var answersD = ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"];
-    var correctAnswers = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"];
+    var questionList = [
+        {
+            "question": "P1",
+            "answerA": "A1",
+            "answerB": "B1",
+            "answerC": "C1",
+            "answerD": "D1",
+            "correctAnswer": "A1"
+        },
+        {
+            "question": "P2",
+            "answerA": "A2",
+            "answerB": "B2",
+            "answerC": "C2",
+            "answerD": "D2",
+            "correctAnswer": "A2"
+        }, {
+            "question": "P3",
+            "answerA": "A3",
+            "answerB": "B3",
+            "answerC": "C3",
+            "answerD": "D3",
+            "correctAnswer": "A3"
+        }, {
+            "question": "P4",
+            "answerA": "A4",
+            "answerB": "B4",
+            "answerC": "C4",
+            "answerD": "D4",
+            "correctAnswer": "A4"
+        }, {
+            "question": "P5",
+            "answerA": "A5",
+            "answerB": "B5",
+            "answerC": "C5",
+            "answerD": "D5",
+            "correctAnswer": "A5"
+        }, {
+            "question": "P6",
+            "answerA": "A6",
+            "answerB": "B6",
+            "answerC": "C6",
+            "answerD": "D6",
+            "correctAnswer": "A6"
+        }, {
+            "question": "P7",
+            "answerA": "A7",
+            "answerB": "B7",
+            "answerC": "C7",
+            "answerD": "D7",
+            "correctAnswer": "A7"
+        }, {
+            "question": "P8",
+            "answerA": "A8",
+            "answerB": "B8",
+            "answerC": "C8",
+            "answerD": "D8",
+            "correctAnswer": "A8"
+        }, {
+            "question": "P9",
+            "answerA": "A9",
+            "answerB": "B9",
+            "answerC": "C9",
+            "answerD": "D9",
+            "correctAnswer": "A9"
+        }, {
+            "question": "P10",
+            "answerA": "A10",
+            "answerB": "B10",
+            "answerC": "C10",
+            "answerD": "D10",
+            "correctAnswer": "A10"
+        },
+    ];
     var answerAHandler = document.getElementById("answerA");
     var answerBHandler = document.getElementById("answerB");
     var answerCHandler = document.getElementById("answerC");
@@ -101,21 +170,25 @@
     var result = document.getElementById("result-p");
     var averageResult = document.getElementById("avereageresult-p");
 
-    console.log(localStorage);
     if (localStorage.length !== 0) {
         JSON.parse(localStorage.getItem('results')).forEach(item => {
             list.push(item);
         });
     }
 
-    answerAHandler.textContent = answersA[count];
-    answerBHandler.textContent = answersB[count];
-    answerCHandler.textContent = answersC[count];
-    answerDHandler.textContent = answersD[count];
-    questionHandler.textContent = question[count];
+    setAnswerAndQuestion();
+
+    function setAnswerAndQuestion() {
+        answerAHandler.textContent = questionList[count].answerA;
+        answerBHandler.textContent = questionList[count].answerB;
+        answerCHandler.textContent = questionList[count].answerC;
+        answerDHandler.textContent = questionList[count].answerD;
+        questionHandler.textContent = questionList[count].question;
+    }
+
 
     function chooseAnswer(id) {
-        if (document.getElementById(id).textContent === correctAnswers[count]) {
+        if (document.getElementById(id).textContent === questionList[count].correctAnswer) {
             points++;
         }
         if (count === 9) {
@@ -127,18 +200,15 @@
             resultList.forEach(item => {
                 resultValue += item;
             })
-            console.log(resultList);
             averageResult.textContent = resultValue / resultList.length;
             quizContent.style.display = "none";
             resultContent.style.display = "block"
         }
-        count++;
-        progressBar.style.width = (count + 1) * 10 + "%";
-        answerAHandler.textContent = answersA[count];
-        answerBHandler.textContent = answersB[count];
-        answerCHandler.textContent = answersC[count];
-        answerDHandler.textContent = answersD[count];
-        questionHandler.textContent = question[count];
+        else {
+            count++;
+            progressBar.style.width = (count + 1) * 10 + "%";
+            setAnswerAndQuestion();
+        }
     }
 
     function resetQuiz() {
@@ -147,11 +217,7 @@
         count = 0;
         points = 0;
         progressBar.style.width = (count + 1) * 10 + "%";
-        answerAHandler.textContent = answersA[count];
-        answerBHandler.textContent = answersB[count];
-        answerCHandler.textContent = answersC[count];
-        answerDHandler.textContent = answersD[count];
-        questionHandler.textContent = question[count];
+        setAnswerAndQuestion();
     }
 
 </script>
